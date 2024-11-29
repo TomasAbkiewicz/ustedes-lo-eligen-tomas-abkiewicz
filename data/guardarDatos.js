@@ -5,18 +5,24 @@ let filePathG = "./data/gamesFile.json";
 let currentUserId;
 
 let USERS = [];
-let GAMES = (async () => {
+let GAMES = [];
+
+
+async function loadInitialData() {
     try {
         const usersData = await fs.readFile(filePathU, "utf-8");
         USERS = usersData ? JSON.parse(usersData) : [];
         
         const gamesData = await fs.readFile(filePathG, "utf-8");
-        return gamesData ? JSON.parse(gamesData) : [];
+        GAMES = gamesData ? JSON.parse(gamesData) : [];
     } catch (error) {
         console.error("Error loading data:", error);
-        return [];
+        GAMES = [];
     }
-})();
+}
+
+
+loadInitialData();
 
 export async function newUser(user) {
     let usuarioExistente = USERS.some(u => u.username === user.username);
@@ -47,11 +53,9 @@ export async function newUser(user) {
     };
 
     try {
-        let games = await GAMES; 
-        games.push(game);
-
+        GAMES.push(game);
         await fs.writeFile(filePathU, JSON.stringify(USERS, null, 2));
-        await fs.writeFile(filePathG, JSON.stringify(games, null, 2));
+        await fs.writeFile(filePathG, JSON.stringify(GAMES, null, 2));
         return { ok: true };
     } catch (error) {
         console.error("Error saving data:", error);
@@ -61,11 +65,9 @@ export async function newUser(user) {
 
 export async function save(game) {
     try {
-        let games = await GAMES;
         let id = game.userId;
-        games[id - 1] = game;
-
-        await fs.writeFile(filePathG, JSON.stringify(games, null, 2));
+        GAMES[id - 1] = game;
+        await fs.writeFile(filePathG, JSON.stringify(GAMES, null, 2));
         return { ok: true };
     } catch (error) {
         console.error("Error saving game:", error);
@@ -90,10 +92,10 @@ export function login(input) {
 
 export async function loadGame(userId) {
     try {
-        let games = await GAMES;
-        return games[userId - 1];
+        return GAMES[userId - 1];
     } catch (error) {
         console.error("Error loading game:", error);
         return null;
     }
 }
+
