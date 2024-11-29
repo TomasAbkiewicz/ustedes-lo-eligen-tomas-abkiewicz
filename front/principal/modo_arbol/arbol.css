@@ -1,0 +1,148 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    margin: 0;
+    position: relative;
+    background-image: url(fondo1.png);
+    background-image: url('fondo1.png');
+    background-size: 100% 100%; /* Stretches the image to cover the full height and width */
+    background-position: center top; /* Aligns the image to the top center */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    height: 100vh;
+    overflow:hidden
+}
+
+#counter {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.cross-button {
+    position: absolute;
+    top: 20px; 
+    left: 20px; 
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.tree-container {
+    display: flex;
+    position: absolute;
+    left: 50%;
+}
+
+.tree {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Asegura que el árbol se ajuste sin distorsionarse */
+    transform: translateX(-50%);
+}
+
+
+.gnomo {
+    width: 100px; /* Ajusta el tamaño según sea necesario */
+    height: 100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    cursor: pointer;
+}
+
+#imagen{
+    width: 75px; /* Ajusta el tamaño del gnomo */
+    height: 100px;
+}
+
+.fruit {
+    position: absolute;
+    width: 15%;
+    height: 7.5%;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#counter{
+    color: #fff;
+    font-weight: bold;
+}
+
+.popup {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.popup h2 {
+    margin-top: 0;
+}
+.popup p {
+    margin-top: 20%;
+}
+.popup ul {
+    list-style: none;
+    padding: 0;
+}
+
+.popup li {
+    margin-bottom: 10px;
+}
+
+.close-btn {
+    background: #e74c3c;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.start-button {
+    background-color: #e74c3c;
+    color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 15px 30px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease;
+}
+
+.start-button:hover {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+
+.fruit1 { background-color: #FF6347; top: 5%; left: 5%; }
+.fruit2 { background-color: #FFD700; top: 15%; right: 5%;}
+.fruit3 { background-color: #32CD32; top: 30%; left: 3%; }
+.fruit4 { background-color: #FF4500; top: 45%; right: 10%; }
+.fruit5 { background-color: #8A2BE2; top: 12.5%; left: 50%; transform: translateX(-50%); }

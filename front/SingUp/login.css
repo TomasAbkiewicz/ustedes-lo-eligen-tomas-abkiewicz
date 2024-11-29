@@ -1,0 +1,66 @@
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    background: url('fondo1.png') center/cover;
+    color: #256082;
+}
+.login-container {
+    background-color: #fff;
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    justify-content: center;
+}
+h1 {
+    font-size: 1.8rem;
+    color: #256082;
+    margin-bottom: 20px;
+}
+.login-container input[type="text"],
+.login-container input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+.login-container input:focus {
+    border-color: #256082;
+}
+.login-container button {
+    width: 100%;
+    background-color: #256082;
+    color: white;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.login-container button:hover {
+    background-color: #1e4b69;
+}
+.login-container .create-account {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #333;
+}
+.login-container .create-account a {
+    color: #256082;
+    text-decoration: none;
+    font-weight: bold;
+}
+.login-container .create-account a:hover {
+    text-decoration: underline;
+}

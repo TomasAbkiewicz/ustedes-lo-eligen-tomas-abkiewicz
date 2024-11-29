@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Gnome</title>
+    <link rel="stylesheet" href="login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div class="login-container">
+        <h1>¡Bienvenido a Gnome Clicker!</h1>
+        <input type="text" placeholder="Usuario" id="usuarioLogIn">
+        <input type="password" placeholder="Contraseña" id="contraseñaLogIn">
+        <button id= "ingresar" >Ingresar</button>
+        <div class="create-account">
+            <p>¿No tienes una cuenta?</p>
+            <p><a href="CrearCuenta.html" target="_blank">Crea una</a></p>
+        </div>
+    </div>
+    <div class="right-half"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.4/socket.io.js"></script>
+    <script src="../../data/socket.js"></script>
+    <script src="logIn.js"></script>
+</body>
+</html>

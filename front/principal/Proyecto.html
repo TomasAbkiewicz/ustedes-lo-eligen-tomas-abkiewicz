@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gnome Clicker</title>
+    <link rel="icon" href="olla.png" type="image/x-icon">
+    <link rel="stylesheet" href="Proyecto.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.4/socket.io.js"></script>
+    <script src="../../data/socket.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Unicase&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="screen1">
+        <div id="loginModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Log In</h2>
+                <form id="loginForm">
+                    <input type="text" id="username" name="username"  placeholder="Usuario" required>
+                    <br><br>
+                    <input type="password" id="password" name="password" placeholder="Contraseña" required>
+                    <br><br>
+                    <button type="submit" class="ingresar">Log In</button>
+                    <div class="popUpCrear">
+                        <p> ¿No tienes una cuenta?</p>
+
+                    <p class="crear"><a href="CrearCuenta.html" target= "_blank">Crea una</a></p>
+                </div>
+                </form>
+            </div>
+        </div>
+    
+        <div class="header">
+            <div class="header-left">
+                <button id="save"> <img src="save.png" alt="" srcset=""></button>
+            </div>
+            <div class="header-center">
+                <img src="currency.png" alt="Moneda" class="coin-icon">
+                <span id="currency">0.00</span>
+            </div>
+            <div class="header-right">
+                <img src="info-Photoroom.png" alt="Información" class="info-icon" id="infor">
+                <button id="login" onclick="redirectLogin()"> <img src="candado.png" alt="" srcset="" class="candado"></button>
+            </div>
+        </div>
+
+        <div class="popupContainer">
+            <div class="popup1" id="popup1"> 
+                ¡Bienvenido a Gnome Clicker! Aquí, te embarcarás en una divertida aventura en la que, al hacer clic en un gnomo, ganarás monedas mágicas. Cada moneda que consigas puede ser usada para desbloquear mejoras especiales, como objetos mágicos o habilidades, que te ayudarán a ganar monedas más rápido y en mayor cantidad.
+                A medida que avanzas, podrás aumentar tu colección de gnomos y obtener poderes únicos que harán que tu ganancia de monedas sea cada vez mayor. Sumérgete en este bosque encantado y disfruta de la satisfacción de acumular riquezas, mejorar tus habilidades y descubrir todas las sorpresas que los gnomos tienen preparadas para ti. ¡Empieza a hacer clic y deja que la magia suceda!
+            </div>  
+            </div>
+        <div>
+
+            <div class="containerGnomo">
+                <img src="gnomo.png" alt="" id="gnomo">
+            </div>
+
+            <div class="containerOlla">
+                <img src="olla.png" alt="Pot of Gold">
+            </div>
+            <div class="container">
+                <img id="shop" src="tienda.png" class="tienda">
+            </div>
+            <div class="autoclickButtons">
+                <button id="auto1" class="upgrade">auto1</button>
+                <button id="auto2" class="upgrade">auto2</button>
+                <button id="auto3" class="upgrade">auto3</button>
+            </div>
+            <div class="clickersauto">
+            <div class="containerCarteles">
+    <img src="carteles.png" alt="Carteles mágicos" id="carteles" class="carteles">
+</div>
+    </div>
+
+
+
+                
+                
+                
+                
+            </div>
+            <div class="portalContainer">
+                <img src="ezgif.com-animated-gif-maker.gif" alt="" srcset="" class="portal" id="portal" onclick="redirect()"  onclick="portalClicked()">
+            </div>
+            <div id="tiendaPopUp" class="popup">
+                <button id="closeButton" class="closeButton" style="display: none;">X</button>
+                <h1 class="shopTitle">Upgrades:</h1>
+                <div class="imgTienda">
+                    <img src="MEJORAS.png" alt="" srcset="" class="imgMejoras">
+                    <img src="trebol.png" alt="" srcset="" class="imgMejoras">
+                    <img src="ollaMejora.png" alt="" srcset="" class="imgMejoras">
+                </div>
+                <div class="buttons">
+                  <button id="clickStr" class="upgrade">Regar Jardin: 10</button>
+                  <button id="passiveStr" class="upgrade">Trebol de 4 ojas: 100</button>
+                  <button id="dualStr" class="upgrade"> Olla de Oro: 200</button>
+                </div>
+
+                <div class="descriptions">
+                    <div class="info">Aumenta la cantidad de monedas Ganadas por Click</div>
+                    <div class="info">Aumenta la cantidad de monedas Ganadas por Segundo</div>
+                    <div class="info">Mayor aumento de la cantidad de monedas por Click y por Segundo</div>
+                    
+                </div>
+                    <h1 class="shopTitle">Autoclickers:</h1>
+                <div class="autoclickers">
+                    <button id="ac1"  class="clickers">Autoclicker 1</button>
+                    <button id="ac2" class="clickers">Autoclicker 2</button>
+                    <button id="ac3" class="clickers">Autoclicker 3</button>
+                </div>
+
+            </div>
+            <div id="overlay" class="hidden overlay"></div>
+        </div>
+    </div>
+    <div id="ac1Button" class="ac1">
+        <img src="" alt="">
+    </div>
+    <div id="ac2Button" class="ac2">
+        <img src="" alt="">
+    </div>
+    <div id="ac3Button" class="ac3">
+        <img src="" alt="">
+    </div>
+    <div id="helloScreen" style="display: none;"></div>   
+   
+    
+    <script src="main.js"></script>
+</body>
+</html>
+    

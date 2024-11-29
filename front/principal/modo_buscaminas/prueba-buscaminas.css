@@ -1,0 +1,168 @@
+body {
+    font-family: "Arial", sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #2e4843, #1f2e2b); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    color: #ffffff;
+    text-align: center;
+    background-image: url(fondo.png);
+    background-position: center;
+    background-size: cover;
+    background-color: white;
+}
+
+.container {
+    text-align: center;
+    padding: 20px 30px;
+    border-radius: 15px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(to bottom, #2e4843, #3a5c51); 
+    width: 90%;
+    max-width: 600px;
+}
+
+h1 {
+    font-size: 2.8rem;
+    color: #3a5c51; 
+    text-shadow: 0px 0px 15px #3a5c51;
+}
+
+#game-board {
+    display: grid;
+    gap: 10px;
+    margin: 20px auto;
+    justify-content: center; 
+    align-items: center;
+    padding: 20px;
+    background: #25312f; 
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.6);
+}
+
+.cell {
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: #ffffff;
+    background: linear-gradient(to bottom, #88aac5, #2e4843); 
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.cell:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 8px 12px rgba(184, 203, 208, 0.6); 
+}
+
+.cell.revealed {
+    background: linear-gradient(to bottom, #b8cbdf, #88aac5); 
+    color: #1f2e2b;
+    font-weight: bold;
+}
+
+.cell.gnome {
+    background: linear-gradient(to bottom, #a1866c, #523a2b); 
+    color: #ffffff;
+    font-weight: bold;
+}
+
+button {
+    margin: 10px;
+    padding: 12px 25px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(to bottom, #1f2e2b, #3a5c51); 
+    color: #ffffff;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+button:hover {
+    background: linear-gradient(to bottom, #88aac5, #2e4843); 
+    transform: scale(1.05);
+}
+
+button:disabled {
+    background: #555;
+    cursor: not-allowed;
+}
+
+#status {
+    margin-top: 10px;
+    font-size: 1.2rem;
+    color: #3a5c51;
+}
+
+#coins, #multiplier, #current-winnings {
+    font-weight: bold;
+    color: #3a5c51; 
+}
+
+select {
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #25312f;
+    font-size: 1rem;
+    background: #3a5c51;
+    color: #ffffff;
+    margin-bottom: 10px;
+    transition: box-shadow 0.3s;
+}
+
+select:hover {
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+#footer-message {
+    font-size: 1rem;
+    color: #3a5c51;
+    margin-top: 15px;
+    text-shadow: 0px 0px 5px #3a5c51;
+}
+
+.custom-container {
+    background: linear-gradient(to bottom, #bfa58c, #a58c73); 
+    color: #1f2e2b; 
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    max-width: 90%;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+#back-button {
+    margin: 20px auto;
+    padding: 12px 25px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(to bottom, #a58c73, #7e6c5b); /* Tono beige oscuro */
+    color: #ffffff;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    display: block; /* Centrar el botón */
+}
+
+#back-button:hover {
+    background: linear-gradient(to bottom, #c8b39a, #a58c73); /* Tono más claro al pasar el cursor */
+    transform: scale(1.05); /* Efecto de agrandamiento */
+}
+
+#back-button:active {
+    transform: scale(0.95); /* Efecto de clic */
+}

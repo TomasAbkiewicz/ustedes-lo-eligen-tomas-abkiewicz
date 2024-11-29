@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscaminas</title>
+    <link rel="stylesheet" href="prueba-buscaminas.css">
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.4/socket.io.js"></script>
+    <script src="../../../data/socket.js"></script>
+</head>
+<body>
+    <div class="custom-container">
+    <div class="game-container">
+        <header class="game-header">
+            <h1>Gnome Mines</h1>
+            <p>Descubre cofres de oro, evita a los gnomos y multiplica tus ganancias.</p>
+        </header>
+        <button id="back-button" onclick="goBack()">Volver</button>
+        <div class="hud">
+            <p><strong>Monedas:</strong> <span id="coins">500,000</span></p>
+            <p><strong>Multiplicador:</strong> <span id="multiplier">1.00x</span></p>
+            <p><strong>Ganancias Actuales:</strong> <span id="current-winnings">0</span></p>
+        </div>
+        <div class="controls">
+            <div class="game-options">
+                <label for="grid-size">Tamaño del tablero:</label>
+                <select id="grid-size">
+                    <option value="2x2">2x2 - 50 monedas</option>
+                    <option value="3x3">3x3 - 100 monedas</option>
+                    <option value="5x5">5x5 - 250 monedas</option>
+                    <option value="6x6">6x6 - 500 monedas</option>
+                </select>
+            </div>
+            <button id="start-btn">Iniciar Juego</button>
+        </div>
+        <div id="game-board"></div>
+        <div class="controls">
+            <button id="withdraw-btn" disabled>Retirar Ganancias</button>
+            <p id="status"></p>
+        </div>
+    </div>
+</div>
+</body>
+    <script src="pruebas.js"></script>
+</html>
