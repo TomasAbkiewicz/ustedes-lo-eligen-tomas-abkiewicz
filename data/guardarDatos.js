@@ -1,37 +1,42 @@
-import fs from "fs";
+import fs from "fs/promises";
+
 let filePathU = './data/users.json';
 let filePathG = "./data/gamesFile.json";
 let currentUserId;
 
-let USERS = fs.readFileSync(filePathU, "utf-8");
-USERS = USERS ? JSON.parse(USERS) : []; 
+let USERS = [];
+let GAMES = (async () => {
+    try {
+        const usersData = await fs.readFile(filePathU, "utf-8");
+        USERS = usersData ? JSON.parse(usersData) : [];
+        
+        const gamesData = await fs.readFile(filePathG, "utf-8");
+        return gamesData ? JSON.parse(gamesData) : [];
+    } catch (error) {
+        console.error("Error loading data:", error);
+        return [];
+    }
+})();
 
-
-let GAMES = fs.readFileSync(filePathG, "utf-8");
-GAMES = GAMES ? JSON.parse(GAMES) : [];
-
-export function newUser(user) {
-
+export async function newUser(user) {
     let usuarioExistente = USERS.some(u => u.username === user.username);
     if (usuarioExistente) {
         return false;
     }
 
-
-    let userdata = {     
+    let userdata = {
         username: user.username,
         password: user.password,
         id: USERS.length + 1,
     };
-    USERS.push(userdata); 
-
+    USERS.push(userdata);
 
     let game = {
         userId: userdata.id,
         currency: {
             sunflowers: 10,
         },
-        upgrades:{
+        upgrades: {
             up1: 0,
             up2: 0,
             up3: 0,
@@ -39,45 +44,56 @@ export function newUser(user) {
             ac2: 0,
             ac3: 0,
         }
-        }    
-        GAMES.push(game);
-        fs.writeFileSync(filePathU, JSON.stringify(USERS, null, 2));
-        fs.writeFileSync(filePathG, JSON.stringify(GAMES, null, 2));
+    };
+
+    try {
+        let games = await GAMES; 
+        games.push(game);
+
+        await fs.writeFile(filePathU, JSON.stringify(USERS, null, 2));
+        await fs.writeFile(filePathG, JSON.stringify(games, null, 2));
         return { ok: true };
-}
-            
-
-   
-
-
-
-export function save(game) {
-
-    let GAMES = fs.readFileSync(filePathG, "utf-8");
-    GAMES = GAMES ? JSON.parse(GAMES) : [];
-    let id = game.userId;
-    GAMES[id-1] = game
-
-    fs.writeFileSync(filePathG, JSON.stringify(GAMES, null, 2));
-
-    return { ok: true };
+    } catch (error) {
+        console.error("Error saving data:", error);
+        return { ok: false };
+    }
 }
 
-export function login(input){
+export async function save(game) {
+    try {
+        let games = await GAMES;
+        let id = game.userId;
+        games[id - 1] = game;
+
+        await fs.writeFile(filePathG, JSON.stringify(games, null, 2));
+        return { ok: true };
+    } catch (error) {
+        console.error("Error saving game:", error);
+        return { ok: false };
+    }
+}
+
+export function login(input) {
     for (const user of USERS) {
-        if (user.username === input.username) {     
+        if (user.username === input.username) {
             if (user.password === input.password) {
-                let userId = user.id
+                let userId = user.id;
                 currentUserId = userId;
                 return userId;
-        }else{
-            return false
+            } else {
+                return false;
             }
         }
     }
+    return false;
 }
-export function loadGame(userId){
-    let games = JSON.parse(fs.readFileSync(filePathG, "utf-8"))
-    
-    return games[userId-1];
+
+export async function loadGame(userId) {
+    try {
+        let games = await GAMES;
+        return games[userId - 1];
+    } catch (error) {
+        console.error("Error loading game:", error);
+        return null;
+    }
 }
